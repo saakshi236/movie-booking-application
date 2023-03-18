@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<div class="content-main">
+    <div class="container" style="padding-top: 5%;">
+        <div class="row">
+            <div class="col-sm" *ngFor="let movie of movieList;">
+                <div class="card" style="width: 18rem;">
+                    <img src="https://t3.ftcdn.net/jpg/03/17/79/66/360_F_317796693_B5yF8ybwUMb3MDhe6QQWGJKQYYNHfxKg.jpg"
+                        class="card-img-top" alt="Movie">
+                    <div class="card-body">
+                        <h5 class="card-title">{{movie.title}}</h5>
+                        <p class="card-text"><strong>Release Date: </strong> <em>{{movie.releaseDate |
+                                date:'fullDate'}}</em></p>
+                        <a href="/bookMovie/{{movie.id}}" class="btn btn-primary">Book Movie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

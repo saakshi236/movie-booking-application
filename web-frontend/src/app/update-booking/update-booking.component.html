@@ -1,0 +1,84 @@
+<app-navbar></app-navbar>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-6"><img
+                    src="https://www.thundertix.com/wp-content/uploads/2020/09/Theatre-Chart-1-1200x740.png"
+                    class="card-img-top" alt="Seating Chart"></div>
+            <div class="col-6">
+                <div class="container">
+
+                    <form class="form-horizontal" #loginForm="ngForm" (ngSubmit)="submitBookingVal()">
+                        <div class="form-group"> <label class="form-label">Movie Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" [(ngModel)]="booking.title" name="title" class="form-control"
+                                    value="{{booking.title}}" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group"> <label for="sel1" class="form-label">Theatre</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="sel1" name="theatre" [(ngModel)]="booking.theatre">
+                                    <option value="{{i.cinemaName}}" *ngFor="let i of theatre;">{{i.cinemaName}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"> <label for="sel1" class="form-label">Screen</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="sel1" name="screenInfo" [(ngModel)]="booking.screen">
+                                    <option value="{{screen.screenType}}" *ngFor="let screen of screenTypes;">
+                                        {{screen.screenType}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"> <label for="sel1" class="form-label">Show Time</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" id="sel1" name="showInfo" [(ngModel)]="booking.showInfo"
+                                    ngModel required>
+                                    <option value="{{show.showCycle}}" *ngFor="let show of shows;">{{show.showCycle}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="date">Select Date:</label>
+                            <div class="col-sm-10">
+                                <input type="date" name="date" class="form-control" id="date"
+                                    [(ngModel)]="booking.bookingDate" value="booking.bookingDate | date: 'mediumDate'"
+                                    (change)="datechange($event)" required>
+                            </div>
+                            <p>{{message}} booking date: <strong>{{booking.bookingDate | date: 'fullDate'}}</strong></p>
+                        </div>
+
+                        <div class="form-group" (change)="change1($event)" ngModel required>
+                            <label for="ticket">Select Ticket Type:</label><br>
+                            <input type="radio" name="ticket" value="75" [(ngModel)]="ticketType"> General: 75/-<br>
+                            <input type="radio" name="ticket" value="110" [(ngModel)]="ticketType"> Gold: 110/-<br>
+                            <input type="radio" name="ticket" value="165" [(ngModel)]="ticketType"> Platinum: 165/-<br>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="num">No. of Tickets:</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="num" name="num" value="1"
+                                    (change)="change($event)" min="1" max="10" [(ngModel)]="ticketCount" ngModel
+                                    required>
+                            </div>
+                            <p>Your updated booking amount is: <strong [(ngModel)]="booking.ticketPrice" name="price"
+                                    value="booking.ticketPrice">{{totalAmount}}</strong></p>
+                            <p>Previous booking amount: <strong>{{booking.ticketPrice}}</strong></p>
+                        </div>
+                        <br />
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

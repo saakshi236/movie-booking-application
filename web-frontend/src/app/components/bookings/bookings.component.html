@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <h2>Booking History</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Booking Date</th>
+                <th>Show</th>
+                <th>Theatre</th>
+                <th>Screen</th>
+                <th>Title</th>
+                <th>Amount Paid</th>
+                <th>Change/Cancel Booking</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking of bookingList">
+                <td>{{booking.id}}</td>
+                <td>{{booking.bookingDate | date: 'fullDate'}}</td>
+                <td>{{booking.showInfo}}</td>
+                <td>{{booking.theatre}}</td>
+                <td>{{booking.screen}}</td>
+                <td>{{booking.title}}</td>
+                <td>{{booking.ticketPrice}}</td>
+                <td><button class="btn btn-warning" (click)="updateBooking(booking.id)">Change Booking</button><button
+                        class="btn btn-danger" (click)="deleteBooking(booking.id)">Cancel
+                        Booking</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

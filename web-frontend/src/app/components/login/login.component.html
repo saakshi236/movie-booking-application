@@ -1,0 +1,32 @@
+<div class="container">
+    <br>
+    <h1>Movie Booking Portal Login</h1>
+    <br>
+    <form #loginForm="ngForm" (ngSubmit)="submitLoginCred()">
+        <div class="alert alert-danger" role="alert" *ngIf="message!=null">
+            {{message}}
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" name="emailId" id="email" aria-describedby="emailHelp"
+                placeholder="abc@example.com" [(ngModel)]="user.emailId" required>
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" name="password" id="password" [(ngModel)]="user.password"
+                required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <small class="float-right">New User? <a href="/register">Register Here</a></small>
+    <br />
+    <br />
+    <hr>
+    <div>
+        <p>
+            Login Credentials for Test User<br />
+            Email: xyz@gmail.com<br />
+            Password: xyz
+        </p>
+    </div>
+</div>
